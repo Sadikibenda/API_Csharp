@@ -54,5 +54,34 @@ namespace IntroToAPI.ConsoleApp
                 // return default; 
             return null;
         }
+
+        public async Task<SearchResult<Person>> GetPersonSearchAsync(string query) // query means what we are searching for
+        {
+            HttpResponseMessage response = await _httpclient.GetAsync("https://swapi.dev/api/people?search=" + query);
+
+            if(response.IsSuccessStatusCode)
+            {
+                SearchResult<Person> search = await response.Content.ReadAsAsync<SearchResult<Person>>();
+                return search;
+            }
+            return null;
+
+            // or if(response.IsSuccessStatusCode) return await response.Content.ReadAsAsync<SearchResult<Person>>();  // line 69-70 can replace line 62-65
+           // return null                                                                                               
+        }
+
+        public async Task<SearchResult<T>> GetSearchAsync<T>(string query, string category)
+        {
+            HttpResponseMessage response = await _httpclient.GetAsync($"https://swapi.dev/api/{category}?search={query}");  // $ represent string interpelation
+            // the code above will de exactly as line 64 but line 75 specify the category on the fly
+
+            return response.IsSuccessStatusCode ? await response.Content.ReadAsAsync<SearchResult<T>>(): default;
+              // itineary methode used above; see line 49-55 for review.
+        }
+
+        public async Task<SearchResult<Vehicle>> GetVehicleSearchAsync(string query)
+        {
+            return await GetSearchAsync<Vehicle>(query, "vehicle");
+        }
     }
 }

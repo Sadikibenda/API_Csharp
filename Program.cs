@@ -52,6 +52,8 @@ namespace IntroToAPI.ConsoleApp
                     }
                 }
 
+                        //Generic code below for learning purposes
+                        Console.WriteLine("Generic code below for learning purposes");
                         Console.WriteLine();
 
                // var genericResponse = services.GetTAsync<Vehicle>("http://swapi.dev/api/vehicles/4").Result;
@@ -75,9 +77,19 @@ namespace IntroToAPI.ConsoleApp
                 {
                     Console.WriteLine("Target object does not exist.");
                 }
+
+                    //Query Search code are below
+                Console.WriteLine("Query Search are below");
                 Console.WriteLine();
 
+                SearchResult<Person> skywalkers = services.GetPersonSearchAsync("skywalker").Result;  // is search query we're looking for
+                foreach(Person p in skywalkers.Results)
+                {
+                    Console.WriteLine(p.Name);
+                }
 
+                var genericSearch = services.GetSearchAsync<Vehicle>("speeder", "vehicles").Result;
+                var vehicleSearch = services.GetPersonSearchAsync("speeder").Result;
         }
     }
 }
