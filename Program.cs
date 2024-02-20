@@ -52,6 +52,32 @@ namespace IntroToAPI.ConsoleApp
                     }
                 }
 
+                        Console.WriteLine();
+
+               // var genericResponse = services.GetTAsync<Vehicle>("http://swapi.dev/api/vehicles/4").Result;
+                var genericResponse = services.GetTAsync<Person>("http://swapi.dev/api/people/4").Result;
+                if (genericResponse != null)
+                {
+                    Console.WriteLine(genericResponse.Name);
+                }
+                else{
+                    Console.WriteLine("Target object does not exist.");
+                }
+
+                Console.WriteLine();
+                
+                var person2Response = services.GetPersonAsync("https://swapi.dev/api/people/5").Result;
+                if(person2Response != null)
+                {
+                    Console.WriteLine(person2Response.Name);
+                }
+                else
+                {
+                    Console.WriteLine("Target object does not exist.");
+                }
+                Console.WriteLine();
+
+
         }
     }
 }

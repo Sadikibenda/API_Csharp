@@ -12,6 +12,7 @@ namespace IntroToAPI.ConsoleApp
 
         public async Task<Person> GetPersonAsync(string url)            // async methode always return a Task<>
         {
+            /*
             // Get request 
             HttpResponseMessage response = await _httpclient.GetAsync(url);  // used await instead of .Result bcz its async methode 
 
@@ -22,7 +23,9 @@ namespace IntroToAPI.ConsoleApp
                 return person;  // return person if response success
             }
 
-            return null; // return null if response is not successfull 
+            return null; // return null if response is not successfull  */
+
+            return await GetTAsync<Person>(url);  // this is short methode, it will go hunt down it generic methode below.
             
         }
 
@@ -37,6 +40,19 @@ namespace IntroToAPI.ConsoleApp
             }
 
             return null; // return null if response is not successfull
+        }
+
+        public async Task<T> GetTAsync<T>(string url) where T: class
+        {
+            HttpResponseMessage response = await _httpclient.GetAsync(url);
+
+            if(response.IsSuccessStatusCode)
+            {
+                T content = await response.Content.ReadAsAsync<T>();
+                return content;
+            }
+                // return default; 
+            return null;
         }
     }
 }

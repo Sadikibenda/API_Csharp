@@ -17,3 +17,4 @@ C:\Users\ayubu\Desktop\SoftwareDev\Intro To API\IntroToAPI.ConsoleApp\obj\Debug\
 C:\Users\ayubu\Desktop\SoftwareDev\Intro To API\IntroToAPI.ConsoleApp\obj\Debug\net8.0\IntroToAPI.ConsoleApp.csproj.CopyComplete
 C:\Users\ayubu\Desktop\SoftwareDev\Intro To API\IntroToAPI.ConsoleApp\bin\Debug\net8.0\System.Net.Http.Formatting.dll
 C:\Users\ayubu\Desktop\SoftwareDev\Intro To API\IntroToAPI.ConsoleApp\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\ayubu\Desktop\SoftwareDev\Intro To API\IntroToAPI.ConsoleApp\obj\Debug\net8.0\IntroToAPI.ConsoleApp.sourcelink.json
